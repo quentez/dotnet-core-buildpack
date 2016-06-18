@@ -35,6 +35,7 @@ mkdir -p ${CACHE_DIR}
 
 echo "Installing libunwind ${LIBUNWIND_VERSION}"
 
+mkdir -p ${BUILD_DIR}/libunwind
 curl ${LIBUNWIND_DOWNLOAD_LOCATION} -Ls | tar xz -C ${BUILD_DIR}/libunwind
 
 echo "Installing Dotnet CLI"
@@ -59,6 +60,6 @@ fi
 echo "Building ${PROJECT_JSON_FILE}"
 
 dotnet restore ${PROJECT_JSON_FILE}
-dotnet publish --output ${BUILD_DIR} --configuration Release ${PROJECT_JSON_FILE} 
+dotnet publish --output ${BUILD_DIR} --configuration Release ${PROJECT_JSON_FILE}
 
 cp ${SRC_DIR}/Procfile ${BUILD_DIR}
