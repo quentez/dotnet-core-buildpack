@@ -42,7 +42,7 @@ echo "Installing Dotnet CLI"
 
 curl -OsSL ${DOTNET_INSTALL_LOCATION}
 chmod 755 dotnet-install.sh
-DOTNET_INSTALL_SKIP_PREREQS=1 HOME=${BUILD_DIR} ./dotnet-install.sh -v ${DOTNET_VERSION}
+source DOTNET_INSTALL_SKIP_PREREQS=1 HOME=${BUILD_DIR} ./dotnet-install.sh -v ${DOTNET_VERSION}
 
 # Detect the project.
 DEPLOYMENT_FILE_LOCATION=${SRC_DIR}/.deployment
