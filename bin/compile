@@ -71,4 +71,10 @@ dotnet publish --output ${BUILD_DIR} --configuration Release ${PROJECT_JSON_FILE
 mkdir -p ${BUILD_DIR}/.profile.d
 cp -n ${BUILDPACK_DIR}/.profile.d/* ${BUILD_DIR}/.profile.d/
 
-cp ${SRC_DIR}/Procfile ${BUILD_DIR}
+if [ -e ${SRC_DIR}/Procfile ]; then
+  cp ${SRC_DIR}/Procfile ${BUILD_DIR}
+else
+	cat << EOT >> ${BUILD_DIR}/Procfile
+web: dotnet app.dll
+EOT
+fi
