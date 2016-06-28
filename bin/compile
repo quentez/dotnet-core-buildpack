@@ -26,7 +26,9 @@ export_env_dir ${ENV_DIR}
 : ${NODE_VERSION:="5.5.0"}
 
 # Move the app source code into a temporary src dir using a subshell in order not to leak shopt.
-SRC_DIR=`mktemp -d`
+TEMP_DIR=`mktemp -d`
+mkdir ${TEMP_DIR}/app
+SRC_DIR=${TEMP_DIR}/app
 (
 	shopt -s dotglob
 	mv ${BUILD_DIR}/* ${SRC_DIR}
